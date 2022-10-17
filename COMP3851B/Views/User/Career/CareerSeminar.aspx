@@ -34,21 +34,22 @@
             <h3 class="first-txt" style="font-size:50px;font-weight:bold;color:white">CAREER SEMINARS</h3>
             <h3 class="second-txt"  style="font-size:25px;font-weight:bold;color:white">Here are the upcoming career seminars organized by the school.</h3>
         </div>
+        <br />
         <asp:Table ID="Table1" runat="server" Height="200px" Width="100%">  
             <asp:TableRow runat="server">
-                <asp:TableCell runat="server" Width="30%"><img src="../../../Images/<?php echo $one_item['seminarImage'];?>" style="width:80%;height:auto"></asp:TableCell>  
-                <asp:TableCell runat="server" Width="40%"><p style="font-size:25px;font-weight:bold;padding:0px;margin:0px"><?php echo $one_item['seminarDate']; ?></p><div style="font-size:20px;font-weight:bold;"><?php echo $one_item['seminarName']; ?></div><?php echo $one_item['seminarDesc']; ?></asp:TableCell>  
-                <asp:TableCell runat="server" Width="30%"><?php echo $one_item['seminarLoc']; ?><br /><?php echo $one_item['seminarStarttime']; ?> - <?php echo $one_item['seminarEndtime']; ?><br />Open to: <?php echo $one_item['seminarOpenTo']; ?><br /><br /><button class="button">Register</button></asp:TableCell>  
+                <asp:TableCell runat="server" Width="30%"><img src="../../../Images/insert%20image.png" alt="seminarImage3" style="align-content:center;width:80%;height:auto"></asp:TableCell>  
+                <asp:TableCell runat="server" Width="40%"><p style="font-size:25px;font-weight:bold;padding:0px;margin:0px">seminarName</p><div style="font-size:20px;font-weight:bold;">seminarDate</div>seminarDesc</asp:TableCell>  
+                <asp:TableCell runat="server" Width="30%"><b>Location:</b> seminarLoc<br /><b>Time:</b> seminarStarttime - seminarEndtime<br /><b>Open to:</b> seminarOpenTo<!--<br /><br /><button class="button">Register</button>--></asp:TableCell>  
             </asp:TableRow>  
             <asp:TableRow runat="server">  
                 <asp:TableCell runat="server" Width="30%"><img src="../../../Images/insert%20image.png" alt="seminarImage2" style="align-content:center;width:80%;height:auto"></asp:TableCell>  
-                <asp:TableCell runat="server" Width="40%"><p style="font-size:25px;font-weight:bold;padding:0px;margin:0px">seminarDate2</p><div style="font-size:20px;font-weight:bold;">seminarName2</div>seminarDesc2</asp:TableCell>  
-                <asp:TableCell runat="server" Width="30%">seminarLoc2<br />seminarStarttime2 - seminarEndtime2<br />Open to: seminarOpenTo2<br /><br /><button class="button">Register</button></asp:TableCell>  
+                <asp:TableCell runat="server" Width="40%"><p style="font-size:25px;font-weight:bold;padding:0px;margin:0px">seminarName</p><div style="font-size:20px;font-weight:bold;">seminarDate</div>seminarDesc</asp:TableCell>  
+                <asp:TableCell runat="server" Width="30%"><b>Location:</b> seminarLoc<br /><b>Time:</b> seminarStarttime - seminarEndtime<br /><b>Open to:</b> seminarOpenTo<!--<br /><br /><button class="button">Register</button>--></asp:TableCell>  
             </asp:TableRow>    
             <asp:TableRow runat="server">  
                 <asp:TableCell runat="server" Width="30%"><img src="../../../Images/insert%20image.png" alt="seminarImage3" style="align-content:center;width:80%;height:auto"></asp:TableCell>  
-                <asp:TableCell runat="server" Width="40%"><p style="font-size:25px;font-weight:bold;padding:0px;margin:0px">seminarDate3</p><div style="font-size:20px;font-weight:bold;">seminarName3</div>seminarDesc3</asp:TableCell>  
-                <asp:TableCell runat="server" Width="30%">seminarLoc3<br />seminarStarttime3 - seminarEndtime3<br />Open to: seminarOpenTo3<br /><br /><button class="button">Register</button></asp:TableCell>  
+                <asp:TableCell runat="server" Width="40%"><p style="font-size:25px;font-weight:bold;padding:0px;margin:0px">seminarName</p><div style="font-size:20px;font-weight:bold;">seminarDate</div>seminarDesc</asp:TableCell>  
+                <asp:TableCell runat="server" Width="30%"><b>Location:</b> seminarLoc<br /><b>Time:</b> seminarStarttime - seminarEndtime<br /><b>Open to:</b> seminarOpenTo<!--<br /><br /><button class="button">Register</button>--></asp:TableCell>  
             </asp:TableRow>    
         </asp:Table>
     </div>
