@@ -1,6 +1,9 @@
 ﻿using COMP3851B.BBL;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Data;
+using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
 using System.Web;
@@ -11,80 +14,67 @@ namespace COMP3851B.Views.Admin.AdminEditHomepage
 {
     public partial class EditHomepageFacility : System.Web.UI.Page
     {
-        public List<Facility> facility;
-        protected void Page_Load(object sender, EventArgs e)
+        string a;
+        protected void btnAdd_Click(object sender, EventArgs e)
         {
-            if(Session["uname"].ToString() != "admin")
+            /*if (txtFacilityName.Text == "")
             {
-                ScriptManager.RegisterStartupScript(this, this.GetType(),
-                   "alert",
-                   "alert('This page is only accessible to Admins');window.location ='UserHome.aspx';",
-                   true);
+              //  lblNotice.Text = " Please enter the quote";
+            }
+            else if (txtFacilityDesc.Text == "")
+            {
+                lblNotice.Text = "Please enter the speaker of the quote";
+            }
+            else if (txtFacilityName.Text == "" && txtFacilityDesc.Text == "")
+            {
+                lblNotice.Text = "Please enter the details of the quote";
             }
             else
-            {
-                if (IsPostBack == false)
-                {
-                    
-                            txtFacilityName.Text = "";
-                            txtFacilityDesc.Text = "";
-                        
-                    }
-            }
+            {*/
+                string DbConnect = ConfigurationManager.ConnectionStrings["FunUniversityConnectionString"].ConnectionString;
+                SqlConnection con = new SqlConnection(DbConnect);
+                FuFacilityImg.SaveAs(Request.PhysicalApplicationPath + "./Images/" + FuFacilityImg.FileName.ToString());
+                a = "Images/" + a + FuFacilityImg.FileName.ToString();
+
+                string ins = "insert into campusFacility (facilityName, facilityDesc, facilityPict) values('" + txtFacilityName.Text + "', '" + txtFacilityDesc.Text +"', '" + a.ToString() + "')";
+                SqlCommand com = new SqlCommand(ins, con);
+                con.Open();
+                com.ExecuteNonQuery();
+                con.Close();
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Record Inserted Successfully')", true);
+                GridView1.DataBind();
+                txtFacilityDesc.Text = "";
+                txtFacilityName.Text = "";
+
+            //}
+
         }
 
-        protected void btnCreate_Click(object sender, EventArgs e)
+        protected void btnSearch_Click(object sender, EventArgs e)
         {
-            try
-            {
-                //Get text fields and add new course
-                string textFacilityName = txtFacilityName.Text;
-                string textFacilityDesc = txtFacilityDesc.Text;
+            string DbConnect = ConfigurationManager.ConnectionStrings["FunUniversityConnectionString"].ConnectionString;
+            SqlConnection con = new SqlConnection(DbConnect);
+            string ins = "Select * from campusFacility where (facilityName like '%' +@facilityName + '%' or facilityDesc like '%' +@facilityDesc + '%')";
+            SqlCommand cmd = new SqlCommand(ins, con);
+            cmd.Parameters.Add("@facilityName", SqlDbType.NVarChar).Value = txtSearch.Text;
+            cmd.Parameters.Add("@facilityDesc", SqlDbType.NVarChar).Value = txtSearch.Text;
+            con.Open();
+            cmd.ExecuteNonQuery();
 
+            SqlDataAdapter da = new SqlDataAdapter();
+            da.SelectCommand = cmd;
+            DataSet ds = new DataSet();
+            da.Fill(ds, "facilityName");
+            da.Fill(ds, "facilityDesc");
 
-                //Create folder and file paths
-                var folder = Server.MapPath("~/uploadsCourse/");
-                string fileName = Path.GetFileName(FuFacilityImg.PostedFile.FileName);
-                string filePath = "~/uploads/" + fileName;
-
-                lblFacilityImage.Text = fileName.ToString();
-
-                //create new directory for product images
-                if (!Directory.Exists(folder))
-                {
-                    Directory.CreateDirectory(folder);
-                    //click 'Show All Files' to find folder
-
-                }
-                FuFacilityImg.PostedFile.SaveAs(Server.MapPath(filePath));
-
-                //Initialise new Product object and add to db
-                Course course = new Course(textFacilityName, textFacilityDesc, filePath);
-                int result = course.AddCourse();
-
-                if (result == 1) //add successful
-                {
-                    ScriptManager.RegisterStartupScript(this, this.GetType(),
-                        "alert",
-                        "alert('New product added successfully!');window.location ='ListItem.aspx';",
-                        true);
-                }
-                else
-                {
-                    ScriptManager.RegisterStartupScript(this, this.GetType(),
-                        "alert",
-                        "alert('An error occured while adding product, please try again');window.location ='ListItem.aspx';",
-                        true);
-                }
-            }
-            catch
-            {
-                ScriptManager.RegisterStartupScript(this, this.GetType(),
-                    "alert",
-                    "alert('An error has occured. Please contact the developers to fix this issue.');window.location ='AddItem.aspx';",
-                    true);
-            }
-
+            GridView1.DataSourceID = null;
+            GridView1.DataSource = ds;
+            GridView1.DataBind();
+            con.Close();
+            lblNotice.Text = "Data has been selected";
         }
     }
-}
+    }
+
+       
+

@@ -1,6 +1,8 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.Master" AutoEventWireup="true" CodeBehind="CareerSeminar.aspx.cs" Inherits="COMP3851B.Views.User.CareerNew.CareerSeminar" %>
-<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <style>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/User/User.Master" AutoEventWireup="true" CodeBehind="CareerSeminar.aspx.cs" Inherits="COMP3851B.Views.User.Career.CareerSeminar" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder2" runat="server">
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="head" runat="server">
+     <style>
         .button {
   background-color: #84B4FD;
   border: none;
@@ -12,44 +14,76 @@
   font-size: 12px;
   height:30px;
     }
-
         .first-txt {
             position: absolute;
-            top: 200px;
+            top: 100px;
             left: 50px;
         }
-
         .second-txt {
             position: absolute;
-            top: 300px;
-            left: 50px;
+            top: 220px;
+            left: 34px;
         }
+
+
         </style>
+
+    <link rel="stylesheet" href="../../../CSS/style.css" />
 </asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div class="container-fluid">
+<asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    
+     <div class="container-fluid">
     <!--Content Title-->
         <div class="row">
             <img src="../../../Images/careersembanner.png" alt="semBanner" style="width:100%;height:auto">
-            <h3 class="first-txt" style="font-size:50px;font-weight:bold;color:white">CAREER SEMINARS</h3>
-            <h3 class="second-txt"  style="font-size:25px;font-weight:bold;color:white">Here are the upcoming career seminars organized by the school.</h3>
+            <h3 class="first-txt" style="font-size:50px;font-weight:bold;color:white;width:500px">CAREER SEMINARS</h3>
+            <h3 class="second-txt"  style="font-size:25px;font-weight:bold;color:white;width:800px">Here are the upcoming career seminars organized by the school.</h3>
         </div>
-        <asp:Table ID="Table1" runat="server" Height="200px" Width="100%">  
-            <asp:TableRow runat="server">
-                <asp:TableCell runat="server" Width="30%"><img src="../../../Images/<?php echo $one_item['seminarImage'];?>" style="width:80%;height:auto"></asp:TableCell>  
-                <asp:TableCell runat="server" Width="40%"><p style="font-size:25px;font-weight:bold;padding:0px;margin:0px"><?php echo $one_item['seminarDate']; ?></p><div style="font-size:20px;font-weight:bold;"><?php echo $one_item['seminarName']; ?></div><?php echo $one_item['seminarDesc']; ?></asp:TableCell>  
-                <asp:TableCell runat="server" Width="30%"><?php echo $one_item['seminarLoc']; ?><br /><?php echo $one_item['seminarStarttime']; ?> - <?php echo $one_item['seminarEndtime']; ?><br />Open to: <?php echo $one_item['seminarOpenTo']; ?><br /><br /><button class="button">Register</button></asp:TableCell>  
-            </asp:TableRow>  
-            <asp:TableRow runat="server">  
-                <asp:TableCell runat="server" Width="30%"><img src="../../../Images/insert%20image.png" alt="seminarImage2" style="align-content:center;width:80%;height:auto"></asp:TableCell>  
-                <asp:TableCell runat="server" Width="40%"><p style="font-size:25px;font-weight:bold;padding:0px;margin:0px">seminarDate2</p><div style="font-size:20px;font-weight:bold;">seminarName2</div>seminarDesc2</asp:TableCell>  
-                <asp:TableCell runat="server" Width="30%">seminarLoc2<br />seminarStarttime2 - seminarEndtime2<br />Open to: seminarOpenTo2<br /><br /><button class="button">Register</button></asp:TableCell>  
-            </asp:TableRow>    
-            <asp:TableRow runat="server">  
-                <asp:TableCell runat="server" Width="30%"><img src="../../../Images/insert%20image.png" alt="seminarImage3" style="align-content:center;width:80%;height:auto"></asp:TableCell>  
-                <asp:TableCell runat="server" Width="40%"><p style="font-size:25px;font-weight:bold;padding:0px;margin:0px">seminarDate3</p><div style="font-size:20px;font-weight:bold;">seminarName3</div>seminarDesc3</asp:TableCell>  
-                <asp:TableCell runat="server" Width="30%">seminarLoc3<br />seminarStarttime3 - seminarEndtime3<br />Open to: seminarOpenTo3<br /><br /><button class="button">Register</button></asp:TableCell>  
-            </asp:TableRow>    
-        </asp:Table>
+        <hr />
+        <asp:ListView ID="CareerSeminarView" DataSourceID="SeminarDataSource" runat="server">
+        <LayoutTemplate>
+        <table class="w-100">
+            <tr runat="server" class="header">
+              <th runat="server" colspan="3"></th>
+            </tr>
+            <tr runat="server" id="groupPlaceholder" />
+        </table>
+        </LayoutTemplate>    
+        <GroupTemplate>
+                <tr runat="server" id="ProductsRow">
+                    <td runat="server" id="itemPlaceholder" />
+                </tr>
+        </GroupTemplate>
+        <ItemTemplate>
+                <td runat="server" id="itemPlaceholder" />
+                <td class="auto-style1" width="25%">
+                    <asp:Image ID="Image1" runat="server" Height="200px" Width="350px" ImageUrl='<%# "~/Images/" + Eval("seminarImage") %>' />
+                </td>
+                <td class="auto-style2" width="35%">
+                    <asp:Label ID="Label1" runat="server" Font-Bold="True" Font-Size="Larger" Text='<%# Eval("seminarName")%>'></asp:Label>
+                    <br />
+                    <asp:Label ID="Label2" runat="server" Font-Bold="True" Font-Size="Large" Text='<%# Eval("seminarDate", "{0:dd/MM/yyyy}")%>'></asp:Label>
+                    <br />
+                    <asp:Label ID="Label3" runat="server" Text='<%# Eval("seminarDesc")%>'></asp:Label>
+                </td>
+                <td width="35%">
+                    <strong>Location:</strong>
+                    <asp:Label ID="Label4" runat="server" Text='<%# Eval("seminarLoc")%>'></asp:Label>
+                    <br />
+                    <strong>Time:
+                    <asp:Label ID="Label5" runat="server" Font-Bold="False" Text='<%# DateTime.Parse(Eval("seminarStarttime").ToString()).ToString("hh:mm tt")%>'></asp:Label> &nbsp;-
+                    <asp:Label ID="Label6" runat="server" Font-Bold="False" Text='<%# DateTime.Parse(Eval("seminarEndtime").ToString()).ToString("hh:mm tt")%>'></asp:Label>
+                    <br />
+                    Open To:
+                    <asp:Label ID="Label7" runat="server" Font-Bold="False" Text='<%# Eval("seminarOpenTo")%>'></asp:Label>
+                    </strong>
+                </td>
+                </ItemTemplate>
+        </asp:ListView>
     </div>
+
+    <asp:SqlDataSource ID="SeminarDataSource" runat="server" 
+        ConnectionString="<%$ ConnectionStrings:FunUniversityConnectionString %>"
+        SelectCommand="select * from seminar order by seminarDate">
+      </asp:SqlDataSource>
 </asp:Content>

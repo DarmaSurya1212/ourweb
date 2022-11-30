@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace COMP3851B.Views.User.CareerNew
+namespace COMP3851B.Views.User.Career
 {
     public partial class CareerSeminar : System.Web.UI.Page
     {

@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace COMP3851B.Views.User.CareerNew
+namespace COMP3851B.Views.User.Career
 {
 
 
@@ -15,12 +15,21 @@ namespace COMP3851B.Views.User.CareerNew
     {
 
         /// <summary>
-        /// Table1 control.
+        /// CareerSeminarView control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Table Table1;
+        protected global::System.Web.UI.WebControls.ListView CareerSeminarView;
+
+        /// <summary>
+        /// SeminarDataSource control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource SeminarDataSource;
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using COMP3851B.BBL;
@@ -12,8 +13,8 @@ namespace COMP3851B.DAL
     public class CourseDAO
     {
         //insert course
-        public int Insert(Course Course) 
-        { 
+        public int Insert(Course Course)
+        {
             string DBConnect = ConfigurationManager.ConnectionStrings["FunUniversityConnectionString"].ConnectionString;
             SqlConnection conn = new SqlConnection(DBConnect);
 
@@ -85,7 +86,7 @@ namespace COMP3851B.DAL
 
             Course uniCourse = null;
             int rec_cnt = ds.Tables[0].Rows.Count;
-            if(rec_cnt == 1)
+            if (rec_cnt == 1)
             {
                 DataRow row = ds.Tables[0].Rows[0];
                 int cid = Convert.ToInt32(row["courseID"]);
@@ -101,7 +102,7 @@ namespace COMP3851B.DAL
         //Delete one course by id
         public int DeleteOne(int id)
         {
-           string DBConnect = ConfigurationManager.ConnectionStrings["FunUniversityConnectionString"].ConnectionString;
+            string DBConnect = ConfigurationManager.ConnectionStrings["FunUniversityConnectionString"].ConnectionString;
             SqlConnection conn = new SqlConnection(DBConnect);
 
             string sqlstmt = "Delete product where courseID = @paraCId";
@@ -164,7 +165,7 @@ namespace COMP3851B.DAL
             }
             else
             {
-                foreach(DataRow row in ds.Tables[0].Rows)
+                foreach (DataRow row in ds.Tables[0].Rows)
                 {
                     int courseId = Convert.ToInt32(row["courseID"]);
                     string coursename = Convert.ToString(row["courseName"]);
@@ -194,7 +195,7 @@ namespace COMP3851B.DAL
             List<Course> recList = new List<Course>();
 
             int rec_cnt = ds.Tables[0].Rows.Count;
-            if(rec_cnt == 0)
+            if (rec_cnt == 0)
             {
                 recList = null;
             }

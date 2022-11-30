@@ -1,4 +1,4 @@
-﻿using COMP3851B.BBL;
+using COMP3851B.BBL;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -127,8 +127,8 @@ namespace COMP3851B.DAL
             SqlCommand cmd = new SqlCommand(sqlstmt, conn);
 
             cmd = new SqlCommand(sqlstmt.ToString(), conn);
-            
-           
+
+
             cmd.Parameters.AddWithValue("@paraCampusLoc", campus.campusLoc);
             cmd.Parameters.AddWithValue("@paraCampusImg", campus.campusImage);
             cmd.Parameters.AddWithValue("@ParaCampusID", campus.campusID);

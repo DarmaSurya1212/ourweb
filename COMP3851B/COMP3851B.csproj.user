@@ -10,12 +10,13 @@
     <UseGlobalApplicationHostFile />
     <LastActiveSolutionConfig>Debug|Any CPU</LastActiveSolutionConfig>
     <ProjectView>ProjectFiles</ProjectView>
+    <NameOfLastUsedPublishProfile>D:\computer science\compsci project\upload gitbash\COMP3851B\Properties\PublishProfiles\FreshmanGuideProgram - Web Deploy.pubxml</NameOfLastUsedPublishProfile>
   </PropertyGroup>
   <ProjectExtensions>
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <StartPageUrl>Views/User/Campus/Campus Event.aspx</StartPageUrl>
+          <StartPageUrl>Views/User/UserHomepage/UserHome.aspx</StartPageUrl>
           <StartAction>SpecificPage</StartAction>
           <AspNetDebugging>True</AspNetDebugging>
           <SilverlightDebugging>False</SilverlightDebugging>

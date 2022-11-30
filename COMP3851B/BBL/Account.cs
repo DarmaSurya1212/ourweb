@@ -1,105 +1,78 @@
-﻿using System;
+﻿using COMP3851B.DAL;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using COMP3851B.DAL;
 
 namespace COMP3851B.BBL
 {
     public class Account
     {
-
-        public string AdminEmail { get; set; }
-        public string AdminPassword { get; set; }
-        public string AdminUsername { get; set; }
-        public int AdminAge { get; set; }
-        public string IsDisabled { get; set; }
-        public string IsAdmin { get; set; }
-
+        //Account Properties
+        public int adminID { get; set; }
+        public string adminEmail { get; set; }
+        public string adminPass { get; set; }
+        public string adminName { get; set; }
 
         public Account()
         {
 
-
         }
-
-        public Account(string name)
+        public Account (string email)
         {
-            this.AdminUsername = name;
+            this.adminEmail = email;
         }
-
-        public Account(string uemail, string upwd, string uname)
+        public Account (int id, string email)
         {
-            this.AdminEmail = uemail;
-            this.AdminPassword = upwd;
-            this.AdminUsername = uname;
+            this.adminID = id;
+            this.adminEmail = email;
         }
 
-        public Account(string uname, string pwd, int age)
+        public Account(string email, string pass, string name)
         {
-            this.AdminUsername = uname;
-            this.AdminPassword = pwd;
-            this.AdminAge = age;
+            this.adminEmail = email;
+            this.adminPass = pass;
+            this.adminName = name;
         }
 
-        public Account(string uname, string pwd, string isadmin, string isdisabled)
+        public Account(int id, string email, string pass, string name)
         {
-            this.AdminUsername = uname;
-            this.AdminPassword = pwd;
-            this.IsAdmin = isadmin;
-            this.IsDisabled = isdisabled;
-        }
-        public Account(string uname, string email, string isDisabled, string pwd, string isadmin)
-        {
-            this.AdminEmail = email;
-            this.AdminUsername = uname;
-            this.IsAdmin = isadmin;
-            this.AdminPassword = pwd;
-            this.IsDisabled = isDisabled;
-        }
-        public Account(string uname, string email, string password, int age)
-        {
-            this.AdminUsername = uname;
-            this.AdminEmail = email;
-            this.AdminPassword = password;
-            this.AdminAge = age;
+            this.adminID = id;
+            this.adminEmail = email;
+            this.adminPass = pass;
+            this.adminName = name;
         }
 
-        //add new account
+        //methods
+        //account methods
         public int AddAccount()
         {
             AccountDAO dao = new AccountDAO();
-            return dao.Insert(this);
+            return (dao.InsertAccount(this));
         }
 
-        //get account by email
-        public Account RetrieveAccount(string email)
+        public List <Account> GetAllAccount()
         {
             AccountDAO dao = new AccountDAO();
-            return dao.RetrieveAccount(email);
-
+            return dao.GetAllAccount();
         }
 
-        //get account profile by email
-        public Account RetrieveProfile(string email)
+        public Account GetOneAccount(string email)
         {
             AccountDAO dao = new AccountDAO();
-            return dao.RetrieveProfile(email);
+            return dao.GetOneAccount(email);
         }
 
-        //check if account ecist by retrieving one
-        public Account RetrieveOne(string email)
+        public int UpdateAccount(int id)
         {
             AccountDAO dao = new AccountDAO();
-            return dao.RetrieveOne(email);
+            return dao.UpdateAccount(this, id);
         }
 
-        //updating account profile
-        public int UpdateProfile()
+        public int DeleteGuide(int id)
         {
             AccountDAO dao = new AccountDAO();
-            return dao.updateProfile(this);
+            return dao.DeleteAccount(id);
         }
-
     }
 }

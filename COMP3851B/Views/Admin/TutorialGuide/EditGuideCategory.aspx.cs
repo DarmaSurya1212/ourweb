@@ -28,7 +28,7 @@ namespace COMP3851B.Views.Admin.TutorialGuide
             }
         }
 
-        protected void btnAdd_Click(object sender, EventArgs e)
+        protected void btnAdd2_Click(object sender, EventArgs e)
         {
             string btnName = (sender as Button).Text;
 
@@ -92,8 +92,8 @@ namespace COMP3851B.Views.Admin.TutorialGuide
                         GVCat.DataSource = catList;
                         GVCat.DataBind();
 
-                        btnAdd.Text = "Add";
-                        btnSearch.Text = "Search";
+                        btnAdd2.Text = "Add";
+                        btnSearch2.Text = "Search";
                     }
                     else //Unsuccessful
                     {
@@ -157,8 +157,8 @@ namespace COMP3851B.Views.Admin.TutorialGuide
                 lblNotice.Text = "";
 
                 //Change Add/Search buttons to Save/Cancel for editing phase
-                btnAdd.Text = "Save";
-                btnSearch.Text = "Cancel";
+                btnAdd2.Text = "Save";
+                btnSearch2.Text = "Cancel";
             }
             catch //Internal code error
             {
@@ -166,7 +166,21 @@ namespace COMP3851B.Views.Admin.TutorialGuide
             }
         }
 
-        protected void btnSearch_Click(object sender, EventArgs e)
+       
+
+        protected void GVCat_PageIndexChanging(object sender, GridViewPageEventArgs e) //Gridview paging
+        {
+            GVCat.PageIndex = e.NewPageIndex;
+
+            //Bind page data to gridview
+            Guide gde = new Guide();
+            catList = gde.GetAllCategories();
+            GVCat.DataSource = catList;
+            lblNotice.Text = "";
+            GVCat.DataBind();
+        }
+
+        protected void btnSearch2_Click(object sender, EventArgs e)
         {
             string btnName = (sender as Button).Text;
 
@@ -178,8 +192,8 @@ namespace COMP3851B.Views.Admin.TutorialGuide
                 lblNotice.Text = "";
 
                 //Change back Save/Cancel buttons to default Add/Search
-                btnAdd.Text = "Add";
-                btnSearch.Text = "Search";
+                btnAdd2.Text = "Add";
+                btnSearch2.Text = "Search";
             }
             else //Button name = "Search"
             {
@@ -208,17 +222,6 @@ namespace COMP3851B.Views.Admin.TutorialGuide
                     ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('An error has occured while trying to search for a row. Please contact the developers about the issue.')", true);
                 }
             }
-        }
-
-        protected void GVCat_PageIndexChanging(object sender, GridViewPageEventArgs e) //Gridview paging
-        {
-            GVCat.PageIndex = e.NewPageIndex;
-
-            //Bind page data to gridview
-            Guide gde = new Guide();
-            catList = gde.GetAllCategories();
-            GVCat.DataSource = catList;
-            GVCat.DataBind();
         }
     }
 }

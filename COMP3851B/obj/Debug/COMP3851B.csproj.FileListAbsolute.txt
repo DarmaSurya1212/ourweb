@@ -411,6 +411,8 @@ C:\Users\65964\Desktop\Bachelor of IT\Trimester 3 2022\COMP3851B\obj\Debug\COMP3
 C:\Users\65964\Desktop\Bachelor of IT\Trimester 3 2022\COMP3851B\obj\Debug\COMP3851B.dll
 C:\Users\65964\Desktop\Bachelor of IT\Trimester 3 2022\COMP3851B\obj\Debug\COMP3851B.pdb
 C:\Users\65964\Desktop\Bachelor of IT\Trimester 3 2022\COMP3851B\obj\Debug\COMP3851B.csproj.AssemblyReference.cache
+D:\computer science\compsci project\upload gitbash\COMP3851B\obj\Debug\COMP3851B.csproj.CoreCompileInputs.cache
+D:\computer science\compsci project\upload gitbash\COMP3851B\obj\Debug\COMP3851B.csproj.AssemblyReference.cache
 D:\computer science\compsci project\upload gitbash\COMP3851B\bin\COMP3851B.dll.config
 D:\computer science\compsci project\upload gitbash\COMP3851B\bin\COMP3851B.dll
 D:\computer science\compsci project\upload gitbash\COMP3851B\bin\COMP3851B.pdb
@@ -465,8 +467,6 @@ D:\computer science\compsci project\upload gitbash\COMP3851B\bin\roslyn\VBCSComp
 D:\computer science\compsci project\upload gitbash\COMP3851B\bin\roslyn\VBCSCompiler.exe.config
 D:\computer science\compsci project\upload gitbash\COMP3851B\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 D:\computer science\compsci project\upload gitbash\COMP3851B\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-D:\computer science\compsci project\upload gitbash\COMP3851B\obj\Debug\COMP3851B.csproj.AssemblyReference.cache
-D:\computer science\compsci project\upload gitbash\COMP3851B\obj\Debug\COMP3851B.csproj.CoreCompileInputs.cache
 D:\computer science\compsci project\upload gitbash\COMP3851B\obj\Debug\COMP3851B.csproj.CopyComplete
 D:\computer science\compsci project\upload gitbash\COMP3851B\obj\Debug\COMP3851B.dll
 D:\computer science\compsci project\upload gitbash\COMP3851B\obj\Debug\COMP3851B.pdb

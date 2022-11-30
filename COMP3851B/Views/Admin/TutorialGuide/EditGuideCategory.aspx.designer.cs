@@ -33,15 +33,6 @@ namespace COMP3851B.Views.Admin.TutorialGuide
         protected global::System.Web.UI.WebControls.Label lblID;
 
         /// <summary>
-        /// lblName control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblName;
-
-        /// <summary>
         /// RequiredFieldValidator1 control.
         /// </summary>
         /// <remarks>
@@ -60,22 +51,22 @@ namespace COMP3851B.Views.Admin.TutorialGuide
         protected global::System.Web.UI.WebControls.TextBox txtName;
 
         /// <summary>
-        /// btnAdd control.
+        /// btnAdd2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnAdd;
+        protected global::System.Web.UI.WebControls.Button btnAdd2;
 
         /// <summary>
-        /// btnSearch control.
+        /// btnSearch2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnSearch;
+        protected global::System.Web.UI.WebControls.Button btnSearch2;
 
         /// <summary>
         /// lblNotice control.

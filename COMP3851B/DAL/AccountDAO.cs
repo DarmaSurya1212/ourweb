@@ -1,52 +1,81 @@
-﻿using System;
+﻿using COMP3851B.BBL;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
-using System.Configuration;
-using COMP3851B.BBL;
-
+using System.Linq;
+using System.Web;
 
 namespace COMP3851B.DAL
 {
     public class AccountDAO
     {
-        //insert new account
-        public int Insert(Account accnt)
+        //Account CRUD + Search
+        public int InsertAccount(Account acnt)
         {
             string DBConnect = ConfigurationManager.ConnectionStrings["FunUniversityConnectionString"].ConnectionString;
             SqlConnection conn = new SqlConnection(DBConnect);
-            string sqlstmt = "INSERT INTO AdminData(AdminEmail, AdminPassword, AdminName, AdminAge) VALUES(@paraUEmail, @paraUPwd, @paraUName, @paraAge)";
 
-            //Execute nonQuerty retuen an integer value
+            string sqlstmt = "IF NOT EXISTS(SELECT 1 FROM adminData WHERE AdminEmail = @paraEmail AND AdminPassword = @paraPass AND AdminName = @paraName) BEGIN INSERT INTO adminData(AdminEmail, AdminPassword, AdminName) VALUES (@paraEmail, @paraPass, @paraName) END ELSE BEGIN RETURN END";
 
-            int iResult = 0;
-            SqlCommand cmd = new SqlCommand(sqlstmt, conn);
-
-            cmd.Parameters.AddWithValue("@paraUEmail", accnt.AdminEmail);
-            cmd.Parameters.AddWithValue("@paraUPwd", accnt.AdminPassword);
-            cmd.Parameters.AddWithValue("@paraUName", accnt.AdminUsername);
-            cmd.Parameters.AddWithValue("@paraAge", accnt.AdminAge);
+            int result = 0; //execute query
+            SqlCommand sqlCmd = new SqlCommand(sqlstmt, conn);
+            sqlCmd.Parameters.AddWithValue("@paraEmail", acnt.adminEmail);
+            sqlCmd.Parameters.AddWithValue("@paraPass", acnt.adminPass);
+            sqlCmd.Parameters.AddWithValue("@paraName", acnt.adminName);
 
             conn.Open();
-            iResult = cmd.ExecuteNonQuery();
-            conn.Close();
-            return iResult;
+            result = sqlCmd.ExecuteNonQuery();
 
+            conn.Close();
+
+            return result;
         }
 
-
-        //Retrieve profile by email
-        public Account RetrieveProfile(string email)
+        public List<Account> GetAllAccount()
         {
             string DBConnect = ConfigurationManager.ConnectionStrings["FunUniversityConnectionString"].ConnectionString;
-            SqlConnection myConn = new SqlConnection(DBConnect);
+            SqlConnection conn = new SqlConnection(DBConnect);
 
-            string sqlstmt = "SELECT AdminEmail, AdminPassword, AdminName, AdminAge From AdminData WHERE AdminEmail = @paraEmail";
-            SqlDataAdapter da = new SqlDataAdapter(sqlstmt, myConn);
+            string sqlstmt = "SELECT AdminEmail, AdminPassword, AdminName FROM adminData";
+            SqlDataAdapter da = new SqlDataAdapter(sqlstmt, conn);
 
-            da.SelectCommand.Parameters.AddWithValue("@paraEmail", email );
+            DataSet ds = new DataSet();
+            da.Fill(ds);
+
+            List<Account> acnt = new List<Account>();
+
+            int rec_cnt = ds.Tables[0].Rows.Count;
+            if (rec_cnt == 0)
+            {
+                acnt = null;
+            }
+            else
+            {
+                foreach (DataRow row in ds.Tables[0].Rows)
+                {
+                    int id = Convert.ToInt32(row["adminID"]);
+                    string email = row["adminEmail"].ToString();
+                    string pass = row["adminPassword"].ToString();
+                    string name = row["adminName"].ToString();
+
+                    Account accnt = new Account(id, email, pass, name);
+                    acnt.Add(accnt);
+                }
+            }
+            return acnt;
+
+        }
+        public Account GetOneAccount(string email)
+        {
+            string DBConnect = ConfigurationManager.ConnectionStrings["FunUniversityConnectionString"].ConnectionString;
+            SqlConnection conn = new SqlConnection(DBConnect);
+
+            string sqlstmt = "SELECT  adminPassword, adminName where adminEmail = @paraemail";
+            SqlDataAdapter da = new SqlDataAdapter(sqlstmt, conn);
+
+            da.SelectCommand.Parameters.AddWithValue("@paraemail", email);
 
             DataSet ds = new DataSet();
             da.Fill(ds);
@@ -56,94 +85,56 @@ namespace COMP3851B.DAL
             if (rec_cnt == 1)
             {
                 DataRow row = ds.Tables[0].Rows[0];
-                string adminEmail = row["AdminEmail"].ToString();
-                string uname = row["AdminName"].ToString();
-                string pass = row["AdminPassword"].ToString();
-                int age = Convert.ToInt32(row["AdminAge"]);
               
+                string adminemail = Convert.ToString(row["adminEmail"]);
+                string pass = Convert.ToString(row["adminPassword"]);
+                string name = Convert.ToString(row["adminName"]);
 
-                acnt = new Account(adminEmail, uname, pass, age );
-
+                acnt = new Account(adminemail, pass, name);
             }
             return acnt;
         }
-        //retrieve account by email
-        public Account RetrieveAccount(string email)
-        {
-            string DBConnect = ConfigurationManager.ConnectionStrings["FunUniversityConnectionString"].ConnectionString;
-            SqlConnection myConn = new SqlConnection(DBConnect);
-
-            string sqlstmt = "SELECT  AdminPassword, AdminName, AdminAge From AdminData WHERE AdminEmail = @paraEmail";
-            SqlDataAdapter da = new SqlDataAdapter(sqlstmt, myConn);
-
-            da.SelectCommand.Parameters.AddWithValue("@paraEmail", email);
-
-            DataSet ds = new DataSet();
-            da.Fill(ds);
-
-            Account acnt = null;
-            int rec_cnt = ds.Tables[0].Rows.Count;
-            if (rec_cnt == 1)
-            {
-                DataRow row = ds.Tables[0].Rows[0];
-               
-                string uname = row["AdminName"].ToString();
-                string pass = row["AdminPassword"].ToString();
-                int age = Convert.ToInt32(row["AdminAge"]);
-
-
-                acnt = new Account( uname, pass, age);
-
-            }
-            return acnt;
-        }
-
-
-        //Check if account exists
-        public Account RetrieveOne(string email)
-        {
-            string DBConnect = ConfigurationManager.ConnectionStrings["FunUniversityConnectionString"].ConnectionString;
-            SqlConnection myConn = new SqlConnection(DBConnect);
-
-            string sqlstmt = "SELECT AdminName From Account WHERE AdminEmail = @paraAEmail";
-            SqlDataAdapter da = new SqlDataAdapter(sqlstmt, myConn);
-
-            da.SelectCommand.Parameters.AddWithValue("@paraAEmail", email);
-
-            DataSet ds = new DataSet();
-            da.Fill(ds);
-
-            Account acnt = null;
-            int rec_cnt = ds.Tables[0].Rows.Count;
-            if (rec_cnt == 1)
-            {
-                DataRow row = ds.Tables[0].Rows[0];
-                string uname = row["AdminName"].ToString();
-
-                acnt = new Account(uname);
-
-            }
-            return acnt;
-        }
-
-        //update account
-        public int updateProfile(Account accnt)
+        public int UpdateAccount(Account acnt, int id)
         {
             string DBConnect = ConfigurationManager.ConnectionStrings["FunUniversityConnectionString"].ConnectionString;
             SqlConnection conn = new SqlConnection(DBConnect);
-            string sqlstmt = "UPDATE AdminData SET AdminName = @paraUname, AdminPassword = @ParaUPwd, AdminEmail = @paraUEmail, AdminAge = @ParaAge";
-            int iResult = 0;
-            SqlCommand cmd = new SqlCommand(sqlstmt.ToString(), conn);
 
-            cmd.Parameters.AddWithValue("@paraUEmail", accnt.AdminEmail);
-            cmd.Parameters.AddWithValue("@paraUPwd", accnt.AdminPassword);
-            cmd.Parameters.AddWithValue("@paraUName", accnt.AdminUsername);
-            cmd.Parameters.AddWithValue("@paraAge", accnt.AdminAge);
+            string sqlstmt = "UPDATE adminData SET adminEmail = @paraemail, adminPassword = @parapass, adminName = @paraname WHERE adminID = @paraid";
+            int result = 0;
+            SqlCommand sqlcmd = new SqlCommand(sqlstmt, conn);
+            sqlcmd.Parameters.AddWithValue("@paraemail", acnt.adminEmail);
+            sqlcmd.Parameters.AddWithValue("@parapass", acnt.adminPass);
+            sqlcmd.Parameters.AddWithValue("@paraname", acnt.adminName);
+            sqlcmd.Parameters.AddWithValue("@paraid", acnt.adminID);
 
             conn.Open();
-            iResult = cmd.ExecuteNonQuery();
+            result = sqlcmd.ExecuteNonQuery();
+
             conn.Close();
-            return iResult;
+
+            return result;
+
+        }
+
+        public int DeleteAccount(int adminid)
+        {
+            string DBConnect = ConfigurationManager.ConnectionStrings["FunUniversityConnectionString"].ConnectionString;
+            SqlConnection conn = new SqlConnection(DBConnect);
+
+            string sqlstmt = "DELET adminData where adminID = @paraid";
+
+            int result = 0;
+
+            SqlCommand sqlCmd = new SqlCommand(sqlstmt, conn);
+            sqlCmd.Parameters.AddWithValue("@paraid", adminid);
+
+            conn.Open();
+            result = sqlCmd.ExecuteNonQuery();
+
+            conn.Close();
+
+            return result;
+
         }
     }
 }

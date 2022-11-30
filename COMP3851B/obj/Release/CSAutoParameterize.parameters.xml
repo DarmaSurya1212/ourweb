@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="FunUniversityConnectionString-Web.config Connection String" description="FunUniversityConnectionString Connection String used in web.config by the application to access the database." defaultValue="Data Source=LAPTOP-V9KLQ4QE\SQLEXPRESS01;Initial Catalog=FunUniversity;Integrated Security=True" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="D:\\computer\ science\\compsci\ project\\upload\ gitbash\\COMP3851B\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='FunUniversityConnectionString']/@connectionString" />
+  </parameter>
+</parameters>

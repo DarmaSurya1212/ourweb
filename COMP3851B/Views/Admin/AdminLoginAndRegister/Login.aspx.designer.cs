@@ -24,13 +24,13 @@ namespace COMP3851B.Views.Admin.AdminLoginAndRegister
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
-        /// emailVaidator control.
+        /// emailValidator control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RegularExpressionValidator emailVaidator;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator emailValidator;
 
         /// <summary>
         /// lblErrorLogin control.
@@ -51,13 +51,13 @@ namespace COMP3851B.Views.Admin.AdminLoginAndRegister
         protected global::System.Web.UI.WebControls.TextBox txtEmail;
 
         /// <summary>
-        /// passvalidator control.
+        /// passValidator control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RegularExpressionValidator passvalidator;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator passValidator;
 
         /// <summary>
         /// txtPass control.
@@ -76,23 +76,5 @@ namespace COMP3851B.Views.Admin.AdminLoginAndRegister
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnLogin;
-
-        /// <summary>
-        /// btnRegister control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnRegister;
-
-        /// <summary>
-        /// btnAdminHome control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnAdminHome;
     }
 }

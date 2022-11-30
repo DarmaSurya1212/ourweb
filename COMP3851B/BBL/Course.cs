@@ -18,7 +18,7 @@ namespace COMP3851B.BBL
 
         }
 
-        public Course (string cname)
+        public Course(string cname)
         {
             this.CName = cname;
         }
@@ -39,7 +39,7 @@ namespace COMP3851B.BBL
             this.CPict = cpict;
         }
 
-     
+
         public Course(int cid, string cname, string cdesc)
         {
             this.CId = cid;
@@ -47,7 +47,7 @@ namespace COMP3851B.BBL
             this.CDesc = cdesc;
         }
 
-      
+
         //add new course
         public int AddCourse()
         {
@@ -97,6 +97,6 @@ namespace COMP3851B.BBL
             CourseDAO dao = new CourseDAO();
             return dao.SearchFor(search);
         }
-       
+
     }
 }
