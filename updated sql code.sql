@@ -55,6 +55,7 @@ CREATE TABLE [dbo].[campusEvent](
 	[eventDate] [date] NULL,
 	[eventBeginTime] [time](7) NULL,
 	[eventEndTime] [time](7) NULL,
+	[eventLoc][nvarchar](max) NULL
 PRIMARY KEY CLUSTERED 
 (
 	[eventID] ASC
@@ -82,6 +83,13 @@ SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
+
+create table quotes(
+[quoteID] [int] identity (1,1) not null primary key,
+[quote][varchar](max) null,
+[quotePerson][nvarchar](max)
+)
+go
 
 
 
@@ -129,8 +137,10 @@ GO
 CREATE TABLE [dbo].[sport](
 	[sportID] [int] IDENTITY(1,1) NOT NULL,
 	[sportName] [nvarchar](255) NULL,
-	[sportImage][nvarchar](max) NULL,
-	[sportDesc] [nvarchar](255) NULL,
+	[presidentName][nvarchar](255) NULL,
+	[sportPict][nvarchar](max) NULL,
+	[phoneNumber][nvarchar](50),
+	[sportDescription] [nvarchar](255) NULL,
 PRIMARY KEY CLUSTERED 
 (
 	[sportID] ASC
