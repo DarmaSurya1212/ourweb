@@ -8,7 +8,7 @@
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
     <UseGlobalApplicationHostFile />
-    <LastActiveSolutionConfig>Debug|Any CPU</LastActiveSolutionConfig>
+    <LastActiveSolutionConfig>Release|Any CPU</LastActiveSolutionConfig>
     <ProjectView>ProjectFiles</ProjectView>
     <NameOfLastUsedPublishProfile>D:\computer science\compsci project\upload gitbash\COMP3851B\Properties\PublishProfiles\FreshmanGuideProgram - Web Deploy.pubxml</NameOfLastUsedPublishProfile>
   </PropertyGroup>

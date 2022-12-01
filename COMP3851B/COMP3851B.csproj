@@ -115,6 +115,18 @@
     <Content Include="Views\User\Campus\CampusAchievement.aspx" />
     <Content Include="Views\User\Campus\CampusEvent.aspx" />
     <Content Include="Views\User\Career\CareerSeminar.aspx" />
+    <Content Include="Views\User\CourseGuide\Accomodation.aspx" />
+    <Content Include="Views\User\CourseGuide\ApplyingForPR.aspx" />
+    <Content Include="Views\User\CourseGuide\CourseGuideDetails.aspx" />
+    <Content Include="Views\User\CourseGuide\CourseGuideSearch.aspx" />
+    <Content Include="Views\User\CourseGuide\LateSubmission.aspx" />
+    <Content Include="Views\User\CourseGuide\MakingPayments.aspx" />
+    <Content Include="Views\User\CourseGuide\NearestHospital.aspx" />
+    <Content Include="Views\User\CourseGuide\NearestPolice.aspx" />
+    <Content Include="Views\User\CourseGuide\RenewPassport.aspx" />
+    <Content Include="Views\User\CourseGuide\RenewStudentPass.aspx" />
+    <Content Include="Views\User\CourseGuide\TelecomCompany.aspx" />
+    <Content Include="Views\User\LocalFood\LocalFoodTour.aspx" />
     <Content Include="Views\User\Sport\Book.aspx" />
     <Content Include="Views\User\Sport\css.content\Style.css" />
     <Content Include="Views\User\Sport\images\BASKETBALL2.JPG" />
@@ -291,6 +303,90 @@
     </Compile>
     <Compile Include="Views\User\Career\CareerSeminar.aspx.designer.cs">
       <DependentUpon>CareerSeminar.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\User\CourseGuide\Accomodation.aspx.cs">
+      <DependentUpon>Accomodation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\User\CourseGuide\Accomodation.aspx.designer.cs">
+      <DependentUpon>Accomodation.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\User\CourseGuide\ApplyingForPR.aspx.cs">
+      <DependentUpon>ApplyingForPR.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\User\CourseGuide\ApplyingForPR.aspx.designer.cs">
+      <DependentUpon>ApplyingForPR.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\User\CourseGuide\CourseGuideDetails.aspx.cs">
+      <DependentUpon>CourseGuideDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\User\CourseGuide\CourseGuideDetails.aspx.designer.cs">
+      <DependentUpon>CourseGuideDetails.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\User\CourseGuide\CourseGuideSearch.aspx.cs">
+      <DependentUpon>CourseGuideSearch.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\User\CourseGuide\CourseGuideSearch.aspx.designer.cs">
+      <DependentUpon>CourseGuideSearch.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\User\CourseGuide\LateSubmission.aspx.cs">
+      <DependentUpon>LateSubmission.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\User\CourseGuide\LateSubmission.aspx.designer.cs">
+      <DependentUpon>LateSubmission.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\User\CourseGuide\MakingPayments.aspx.cs">
+      <DependentUpon>MakingPayments.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\User\CourseGuide\MakingPayments.aspx.designer.cs">
+      <DependentUpon>MakingPayments.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\User\CourseGuide\NearestHospital.aspx.cs">
+      <DependentUpon>NearestHospital.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\User\CourseGuide\NearestHospital.aspx.designer.cs">
+      <DependentUpon>NearestHospital.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\User\CourseGuide\NearestPolice.aspx.cs">
+      <DependentUpon>NearestPolice.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\User\CourseGuide\NearestPolice.aspx.designer.cs">
+      <DependentUpon>NearestPolice.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\User\CourseGuide\RenewPassport.aspx.cs">
+      <DependentUpon>RenewPassport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\User\CourseGuide\RenewPassport.aspx.designer.cs">
+      <DependentUpon>RenewPassport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\User\CourseGuide\RenewStudentPass.aspx.cs">
+      <DependentUpon>RenewStudentPass.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\User\CourseGuide\RenewStudentPass.aspx.designer.cs">
+      <DependentUpon>RenewStudentPass.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\User\CourseGuide\TelecomCompany.aspx.cs">
+      <DependentUpon>TelecomCompany.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\User\CourseGuide\TelecomCompany.aspx.designer.cs">
+      <DependentUpon>TelecomCompany.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\User\LocalFood\LocalFoodTour.aspx.cs">
+      <DependentUpon>LocalFoodTour.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\User\LocalFood\LocalFoodTour.aspx.designer.cs">
+      <DependentUpon>LocalFoodTour.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\User\Sport\Book.aspx.cs">
       <DependentUpon>Book.aspx</DependentUpon>
